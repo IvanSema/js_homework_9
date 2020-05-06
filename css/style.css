@@ -45,4 +45,11 @@ h1, h2 {
   padding: 0 0 10px 0;
   color: #545454;
 }
+
+.text-block {
+  display: block;
+  border: none;
+  width: 700px;
+  margin: 100px auto;
+}
 /*# sourceMappingURL=style.css.map */
