@@ -27,7 +27,7 @@ console.log();
 
 let table = '', i = 0, first_array = [], second_array = [], third_array = [];
 
-table += '<table style="margin: 0 auto;"><tr><td>A</td><td>B</td><td>C</td>';
+table += '<table id="table" style="margin: 0 auto;"><tr><td onclick="first_arr_func()">A</td><td onclick="second_arr_func()">B</td><td onclick="third_arr_func()">C</td>';
 while(i <=10){
   
   first_array.push(Math.random().toString(36).substr(2, 2));
@@ -41,8 +41,6 @@ while(i <=10){
 table+= '</table>';
 document.write(table);
 
-console.log(first_array.sort(compareFunction), second_array, third_array);
-
 
 function compareFunction(a, b){
 
@@ -54,3 +52,34 @@ function compareFunction(a, b){
     return 0;
   }
 }
+
+
+function printSorted(){
+  let elem = document.getElementById('table');
+  elem.parentNode.removeChild(elem);
+  table = '', i = 0;
+  table += '<table id="table" style="margin: 0 auto;"><tr><td onclick="first_arr_func()">A</td><td onclick="second_arr_func()">B</td><td onclick="third_arr_func()">C</td>';
+  while(i <=10){
+    table+= `<tr><td>${first_array[i]}</td><td>${second_array[i]}</td><td>${third_array[i]}</td>`
+    i++
+    }
+    table+= '</table>';
+    document.write(table);
+  }
+
+
+function first_arr_func(){
+  first_array.sort(compareFunction);
+  printSorted();
+}
+
+function second_arr_func(){
+  second_array.sort(compareFunction);
+  printSorted();
+}
+
+function third_arr_func(){
+  third_array.sort(compareFunction);
+  printSorted();
+}
+
