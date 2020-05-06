@@ -48,8 +48,13 @@ h1, h2 {
 
 .text-block {
   display: block;
-  border: none;
   width: 700px;
   margin: 100px auto;
+  height: 200px;
+  text-decoration: none;
+}
+
+.textarea {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
