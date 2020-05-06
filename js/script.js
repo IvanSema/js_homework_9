@@ -20,3 +20,37 @@ document.addEventListener('keydown', function(event) {
 
   });
 
+
+  // Создать HTML-страницу с большой таблицей. При клике по заголовку колонки, необходимо отсортировать данные по этой колонке. Учтите, что числовые значения должны сортироваться как числа, а не как строки.
+
+console.log();
+
+let table = '', i = 0, first_array = [], second_array = [], third_array = [];
+
+table += '<table style="margin: 0 auto;"><tr><td>A</td><td>B</td><td>C</td>';
+while(i <=10){
+  
+  first_array.push(Math.random().toString(36).substr(2, 2));
+  second_array.push(Math.random().toString(36).substr(2, 2));
+  third_array.push(Math.random().toString(36).substr(2, 2));
+
+  table+= `<tr><td>${first_array[i]}</td><td>${second_array[i]}</td><td>${third_array[i]}</td>`
+  i++
+}
+
+table+= '</table>';
+document.write(table);
+
+console.log(first_array.sort(compareFunction), second_array, third_array);
+
+
+function compareFunction(a, b){
+
+  if (a > b){
+    return 1;
+  }else if (a < b){
+    return -1;
+  }else{
+    return 0;
+  }
+}
