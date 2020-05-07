@@ -100,19 +100,27 @@ function third_arr_func(){
 let point = document.getElementById('pointID');
 
 
+
+
 addEventListener('mousedown', point => {
   x = point.offsetX;
   y = point.offsetY;
+  if (point.mousedown) return;
 
-  console.log(x, y);
+  addEventListener('mousemove', point => {
+    let window = document.getElementById('third-block');
+    window.style.width = ( point.offsetX   + 'px');
+    window.style.height = ( point.offsetY   + 'px');
+
+  })
 });
 
-addEventListener('mousemove', point => {
-  let window = document.getElementById('third-block');
-  window.style.width = ( point.offsetY + 'px');
-  x+=1
-  console.log(x);
+addEventListener('mouseup', point =>{
+  console.log(1)
 })
+
+
+
 
 // point.onmousedown = function(e) { // 1. отследить нажатие
 
