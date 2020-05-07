@@ -90,3 +90,42 @@ function third_arr_func(){
   printSorted();
 }
 
+
+
+
+// 3. Создать HTML-страницу с блоком текста в рамочке. Реализовать возможность изменять размер блока, если зажать мышку в правом нижнем углу и тянуть ее дальше.
+
+
+
+var point = document.getElementById('pointID');
+
+point.onmousedown = function(e) { // 1. отследить нажатие
+
+  // подготовить к перемещению
+  // 2. разместить на том же месте, но в абсолютных координатах
+  point.style.position = 'absolute';
+  moveAt(e);
+  // переместим в body, чтобы мяч был точно не внутри position:relative
+  document.body.appendChild(point);
+
+  ball.style.zIndex = 1000; // показывать мяч над другими элементами
+
+  // передвинуть мяч под координаты курсора
+  // и сдвинуть на половину ширины/высоты для центрирования
+  function moveAt(e) {
+    point.style.left = e.pageX - point.offsetWidth / 2 + 'px';
+    point.style.top = e.pageY - point.offsetHeight / 2 + 'px';
+  }
+
+  // 3, перемещать по экрану
+  document.onmousemove = function(e) {
+    moveAt(e);
+  }
+
+  // 4. отследить окончание переноса
+  point.onmouseup = function() {
+    document.onmousemove = null;
+    point.onmouseup = null;
+  }
+}
+
