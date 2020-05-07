@@ -97,35 +97,49 @@ function third_arr_func(){
 
 
 
-var point = document.getElementById('pointID');
+let point = document.getElementById('pointID');
 
-point.onmousedown = function(e) { // 1. отследить нажатие
 
-  // подготовить к перемещению
-  // 2. разместить на том же месте, но в абсолютных координатах
-  point.style.position = 'absolute';
-  moveAt(e);
-  // переместим в body, чтобы мяч был точно не внутри position:relative
-  document.body.appendChild(point);
+addEventListener('mousedown', point => {
+  x = point.offsetX;
+  y = point.offsetY;
 
-  ball.style.zIndex = 1000; // показывать мяч над другими элементами
+  console.log(x, y);
+});
 
-  // передвинуть мяч под координаты курсора
-  // и сдвинуть на половину ширины/высоты для центрирования
-  function moveAt(e) {
-    point.style.left = e.pageX - point.offsetWidth / 2 + 'px';
-    point.style.top = e.pageY - point.offsetHeight / 2 + 'px';
-  }
+addEventListener('mousemove', point => {
+  let window = document.getElementById('third-block');
+  window.style.width = ( point.offsetY + 'px');
+  x+=1
+  console.log(x);
+})
 
-  // 3, перемещать по экрану
-  document.onmousemove = function(e) {
-    moveAt(e);
-  }
+// point.onmousedown = function(e) { // 1. отследить нажатие
 
-  // 4. отследить окончание переноса
-  point.onmouseup = function() {
-    document.onmousemove = null;
-    point.onmouseup = null;
-  }
-}
+//   // подготовить к перемещению
+//   // 2. разместить на том же месте, но в абсолютных координатах
+//   point.style.position = 'absolute';
+//   moveAt(e);
+//   // переместим в body, чтобы мяч был точно не внутри position:relative
+//   document.body.appendChild(point);
+
+
+//   // передвинуть мяч под координаты курсора
+//   // и сдвинуть на половину ширины/высоты для центрирования
+//   function moveAt(e) {
+//     point.style.left = e.pageX - point.offsetWidth / 2 + 'px';
+//     point.style.top = e.pageY - point.offsetHeight / 2 + 'px';
+//   }
+
+//   // 3, перемещать по экрану
+//   document.onmousemove = function(e) {
+//     moveAt(e);
+//   }
+
+//   // 4. отследить окончание переноса
+//   point.onmouseup = function() {
+//     document.onmousemove = null;
+//     point.onmouseup = null;
+//   }
+// }
 
